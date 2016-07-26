@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WELCOME</title>
+</head>
+<body>
+WELCOME {{username}}
+
+<div id="addCustomer">
+    <form method="post" action="/dashboard/addCustomer" >
+        <table>
+            <tr>
+                <td>
+                    <label for="name"> Name: </label>
+                </td>
+                <td>
+                 <input type="text" name="name" >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="vc"> VC No </label>
+                </td>
+                <td>
+                    <input type="text" name="vc">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="address"> Address </label>
+                </td>
+                <td>
+                    <input type="text" name="address">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="location"> Location </label>
+                </td>
+                <td>
+                    <select name="location">
+                        <option value="inderlok">Inderlok</option>
+                        <option value="ramson">ramson</option>
+                        <option value="rama">rama</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="number"> Mobile </label>
+                </td>
+                <td>
+                   <input type="number" name="mobile">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="plan"> Plan </label>
+                </td>
+                <td>
+                    <select name="plan">
+                        <option value="4M30GB">4Mbps 30GB</option>
+                        <option value="5MUL">5Mbps UL</option>
+                        <option value="2MUL">2Mbps UL</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td> <input type="submit" value="Submit">  </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<div id="listcustomers">
+    <ul>
+        {{#each customers}}
+            <li> <a href="dashboard/customer/{{id}}" >  {{name}} : {{vc}} </a> </li>
+        {{/each}}
+    </ul>
+
+</div>
+</body>
+</html>

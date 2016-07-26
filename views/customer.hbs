@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer</title>
+</head>
+<body>
+    <div id="custInfo">
+        <table>
+            <tr>
+                <td> Name : </td>
+                <td> {{customer.name}}</td>
+            </tr>
+            <tr>
+                <td> vc : </td>
+                <td> {{customer.vc}}</td>
+            </tr>
+            <tr>
+                <td> Address : </td>
+                <td> {{customer.address}}</td>
+            </tr>
+            <tr>
+                <td> Mobile : </td>
+                <td> {{customer.mobile}}</td>
+            </tr>
+            <tr>
+                <td> expiry : </td>
+                <td> {{customer.expiry}}</td>
+            </tr>
+            <tr>
+                <td> plan : </td>
+                <td> {{customer.plan_code}}</td>
+            </tr>
+        </table>
+
+        <div id="logs">
+            <ul>
+                {{#each logs}}
+                    <li> <strong> {{this.type}} </strong> @ {{this.time}} : {{this.text}} </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+
+    <div id="payment">
+        <form method="post" action="/dashboard/customer/{{customer.id}}/pay" >
+            <table>
+                <tr>
+                    <td>
+                        Payment Type
+                    </td>
+                    <td>
+                        <select name="type">
+                            <option value="router"> Router </option>
+                            <option value="plan"> Plan </option>
+                            <option value="installation">Installation</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        PLAN :
+                    </td>
+                    <td>
+                        <select name="plan">
+                            <option value="4M30GB">4Mbps 30GB</option>
+                            <option value="5MUL">5Mbps UL</option>
+                            <option value="2MUL">2Mbps UL</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Apply Now:
+                    </td>
+                    <td>
+                        <input type="radio" name="applyNow" value="true" > Yes
+                    </td>
+                    <td>
+                        <input type="radio" name="applyNow" value="false" checked> No
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Amount
+                    </td>
+                    <td>
+                        <input type="number" name="amount">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Make Payment" >
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+<div id="renewals">
+    {{#each renewal}}
+        Renewal Added for {{this.plan}} on {{this.time}} will auto apply on {{this.begin}}
+    {{/each}}
+</div>
+</body>
+</html>
